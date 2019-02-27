@@ -1,21 +1,158 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<mat-toolbar color="primary">Home claim system</mat-toolbar>
 
+<div class="jumbotron">
+  <div class="container">
+
+    <form name='form' [formGroup]="claimForm" (ngSubmit)="PostClaim(claimForm)">
+      <input type="hidden" name="id" formControlName="id">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            Claim Type : 
+            <mat-radio-group formControlName="claimType" placeholder="Loss type" name="claimType" required>
+              <mat-radio-button value="1">ISO designated CAT</mat-radio-button>
+              <mat-radio-button value="2">Medical</mat-radio-button>
+              <mat-radio-button value="3">All other</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <input name="policyNumber" matInput placeholder="Policy Number" formControlName="policyNumber" required>
+              <mat-error *ngIf="policyNumber.errors?.required">
+                Policy Number is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <input name="claimTitle" matInput placeholder="Claim Title" formControlName="claimTitle" required>
+              <mat-error *ngIf="claimTitle.errors?.required">
+                Claim Title is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <mat-form-field>
+                <mat-select placeholder="Claim reason" name="claimReasons" formControlName="claimReasons" required>
+                    <mat-option *ngFor="let claimReason of claimReasons" [value]="claimReason.value">
+                        {{claimReason.viewValue}}
+                      </mat-option>
+                  </mat-select>
+              <mat-error *ngIf="claimReason.errors?.required">
+                Claim Reason is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <input name="claimAmount" matInput placeholder="Claim Contact" formControlName="claimAmount" required>
+              <mat-error *ngIf="claimAmount.errors?.required">
+                Claim Amount is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <input name="insured" matInput placeholder="Insured" formControlName="insured" required>
+              <mat-error *ngIf="insured.errors?.required">
+                Insured is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <textarea name="locationAddress" matInput placeholder="Location address" formControlName="locationAddress"
+                required></textarea>
+              <mat-error *ngIf="locationAddress.errors?.required">
+                Location address is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <mat-form-field>
+                <input matInput [matDatepicker]="lossDatePicker" placeholder="Loss date" formControlName="lossDatePicker"
+                required>
+                <mat-datepicker-toggle matSuffix [for]="lossDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #lossDatePicker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <mat-form-field>
+                <input matInput [matDatepicker]="claimDatePicker" placeholder="Claim date" formControlName="claimDatePicker"
+                required>
+                <mat-datepicker-toggle matSuffix [for]="claimDatePicker"></mat-datepicker-toggle>
+                <mat-datepicker #claimDatePicker></mat-datepicker>
+
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <input name="producer" matInput placeholder="Producer" formControlName="producer" required>
+              <mat-error *ngIf="producer.errors?.required">
+                Producer is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <input class="btn btn-secondary" type="file" name="file" formControlName="file" type="file" (change)="fileEvent($event)" />
+            </div>
+          </div>
+      </div>
+    
+      <div class="row">
+        <div class="col-md-2">
+          <div class="form-group">
+            <button mat-raised-button color="primary" [disabled]="claimForm.invalid" type="submit">Submit claim</button>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <input class="btn btn-secondary" type="reset" value="Reset" />
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="alert alert-danger errormessage" *ngIf="submitMessage">{{ submitMessage }}</div>
+  </div>
+</div>
+<div class="container">
+    <footer>&copy; Copyright 2019 Cognizant</footer>
+</div>
 <router-outlet></router-outlet>
