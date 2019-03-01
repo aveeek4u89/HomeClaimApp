@@ -77,7 +77,7 @@ export class AppComponent implements OnInit {
      get  file(){return this.claimForm.get('file')}
      displayClaimNumber(message: string, action: string) {
       this.snackBar.open(message, action, {
-        duration: 2000,
+        duration: 10000,
       });
     }  
     
