@@ -16,6 +16,6 @@ export class HomeClaimServiceService {
     //console.log(formData);
     formData.id = "JY"+formData.policyNumber+Date.now();
     //console.log(formData);
-    return this.http.post('http://localhost:55776/api/HomeClaim/',formData);
+    return this.http.post('https://homeclaimapi.azurewebsites.net/api/HomeClaim/',formData);
   }
 }

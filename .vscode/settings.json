@@ -1,0 +1,4 @@
+{
+    "appService.deploySubpath": "dist\\HomeClaimSystem",
+    "appService.defaultWebAppToDeploy": "/subscriptions/c528c6bb-3526-4d89-b104-688f96a216d4/resourceGroups/newresource/providers/Microsoft.Web/sites/HomeClaimSystem"
+}
