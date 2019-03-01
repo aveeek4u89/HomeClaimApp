@@ -10,12 +10,15 @@ import { Observable } from 'rxjs';
 })
 export class HomeClaimServiceService {
   public submitMessage:string="";
+  homeClaim : HomeClaim;
   constructor(private http : HttpClient, public datePipe:DatePipe) { }
 
   addHomeClaim(formData: HomeClaim) :Observable<any>{ 
     //console.log(formData);
-    formData.id = "JY"+formData.policyNumber+Date.now();
+    formData.id = "JY"+Date.now();
     //console.log(formData);
+    this.homeClaim = formData;
     return this.http.post('https://homeclaimapi.azurewebsites.net/api/HomeClaim/',formData);
+  
   }
 }

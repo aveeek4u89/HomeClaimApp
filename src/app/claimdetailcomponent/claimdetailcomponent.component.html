@@ -1,0 +1,54 @@
+
+<h3>Claim registered successfully with below details :</h3>
+<mat-toolbar color="primary">Claim Number: <b> &nbsp;{{homeClaim.id}}</b><br></mat-toolbar>
+
+<table class="table-striped" style="width:800px;">
+  <tr>
+    <td><b>Claim Type</b></td>
+    <td>{{homeClaim.claimType}}</td>
+    <td><b>Producer</b> </td>
+    <td>  {{homeClaim.producer}}</td>
+  </tr>
+  <tr>
+      <td><b> Policy number</b></td>
+      <td>  {{homeClaim.policyNumber}}</td>
+      <td><b>Claim Title</b></td>
+      <td>{{homeClaim.claimTitle}}</td>
+    </tr>
+    <tr>
+        <td><b> Claim Reasons</b></td>
+        <td>  {{homeClaim.claimReasons}}</td>
+        <td><b>Claim Contact</b></td>
+        <td> {{homeClaim.claimAmount}}</td>
+      </tr>
+      <tr>
+          <td><b> Location Address</b></td>
+          <td>  {{homeClaim.locationAddress}}</td>
+          <td><b>Insured</b></td>
+          <td> {{homeClaim.insured}}</td>
+        </tr>
+        <tr>
+            <td><b> Loss Date</b></td>
+            <td>  {{homeClaim.lossDatePicker | date}}</td>
+            <td><b>Claim Date</b></td>
+            <td> {{homeClaim.claimDatePicker | date}}</td>
+          </tr>
+          <tr><td></td></tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="float: right;"><button mat-raised-button color="warn" (click)="onClose()">Close</button></td>
+          </tr>
+</table>
+
+  
+
+    
+    
+   
+    
+
+   
+
+ 

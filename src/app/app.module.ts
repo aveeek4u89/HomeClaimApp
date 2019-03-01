@@ -11,10 +11,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {DatePipe} from '@angular/common';
+import { ClaimdetailcomponentComponent } from './claimdetailcomponent/claimdetailcomponent.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ClaimdetailcomponentComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +24,7 @@ import {DatePipe} from '@angular/common';
     ,FormsModule, ReactiveFormsModule,HttpClientModule,MatToolbarModule,MatSnackBarModule
   ],
   providers: [MatDatepickerModule,DatePipe],
+  entryComponents:[ClaimdetailcomponentComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

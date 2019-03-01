@@ -10,9 +10,9 @@
           <div class="form-group">
             Claim Type : 
             <mat-radio-group formControlName="claimType" placeholder="Loss type" name="claimType" required>
-              <mat-radio-button value="1">ISO designated CAT</mat-radio-button>
-              <mat-radio-button value="2">Medical</mat-radio-button>
-              <mat-radio-button value="3">All other</mat-radio-button>
+              <mat-radio-button value="ISO designated CAT">ISO designated CAT</mat-radio-button>
+              <mat-radio-button value="Medical">Medical</mat-radio-button>
+              <mat-radio-button value="All other">All other</mat-radio-button>
             </mat-radio-group>
           </div>
         </div>
@@ -60,7 +60,7 @@
             <mat-form-field class="example-full-width">
               <input name="claimAmount" matInput placeholder="Claim Contact" formControlName="claimAmount" required>
               <mat-error *ngIf="claimAmount.errors?.required">
-                Claim Title is required
+                Claim Contact is required
               </mat-error>
             </mat-form-field>
           </div>
